@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+        PYTHONPATH = "${WORKSPACE}"
+    }
     stages {
         stage('Setup') {
             steps {
@@ -12,7 +15,7 @@ pipeline {
         }
         stage('Tests unitaires') {
             steps {
-                sh 'venv/bin/pytest tests/'
+                sh 'PYTHONPATH=${WORKSPACE} venv/bin/pytest tests/ -v'
             }
         }
         stage('SAST - Bandit') {
