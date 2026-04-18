@@ -20,7 +20,7 @@ pipeline {
         }
         stage('SAST - Bandit') {
             steps {
-                sh 'python3 -m bandit -r src/ -ll'
+                sh 'venv/bin/bandit -r src/ -ll'
             }
         }
         stage('Secrets Scan - Gitleaks') {
