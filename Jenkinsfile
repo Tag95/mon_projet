@@ -1,12 +1,6 @@
 pipeline {
     agent any
     stages {
-        stage('Clonage') {
-            steps {
-                git credentialsId: 'github-token',
-                    url: 'https://github.com/Tag95/mon_projet.git'
-            }
-        }
         stage('Setup') {
             steps {
                 sh '''
